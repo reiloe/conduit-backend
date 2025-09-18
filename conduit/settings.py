@@ -129,15 +129,16 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-CSRF_TRUSTED_ORIGINS = (
-    'localhost:' + os.environ['FRONTEND_PORT'],
-    'localhost:' + os.environ['BACKEND_PORT'],
-)
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:' + os.environ['FRONTEND_PORT'],
-    'localhost:' + os.environ['BACKEND_PORT'],
-)
+CSRF_TRUSTED_ORIGINS = ()
+CORS_ORIGIN_WHITELIST = ()
+
+hosts = [f"{char}:"+os.environ['FRONTEND_PORT'] for char in ALLOWED_HOSTS]
+hosts.extend([f"{char}:"+os.environ['BACKEND_PORT'] for char in ALLOWED_HOSTS])
+
+for host in hosts:
+    CORS_ORIGIN_WHITELIST += (host,)
+    CSRF_TRUSTED_ORIGINS += (host,)
 
 CORS_ALLOW_CREDENTIALS = True
 
