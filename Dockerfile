@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . $WORKDIR
 
-EXPOSE 8000
+EXPOSE "${BACKEND_PORT}"
 
 ENTRYPOINT ["/bin/bash", "setup.sh"]

@@ -130,13 +130,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 CSRF_TRUSTED_ORIGINS = (
-    'localhost:8282',
-    'localhost:8000',
+    'localhost:' + os.environ['FRONTEND_PORT'],
+    'localhost:' + os.environ['BACKEND_PORT'],
 )
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8282',
-    'localhost:8000',
+    'localhost:' + os.environ['FRONTEND_PORT'],
+    'localhost:' + os.environ['BACKEND_PORT'],
 )
 
 CORS_ALLOW_CREDENTIALS = True
