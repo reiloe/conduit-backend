@@ -129,22 +129,12 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-CORS_ALLOW_ALL_ORIGINS = True
-
-CSRF_TRUSTED_ORIGINS = ()
 CORS_ORIGIN_WHITELIST = ()
 
 hosts = [f"{char}:"+os.environ['FRONTEND_PORT'] for char in ALLOWED_HOSTS]
-hosts.extend([f"{char}:"+os.environ['BACKEND_PORT'] for char in ALLOWED_HOSTS])
 
 for host in hosts:
     CORS_ORIGIN_WHITELIST += (host,)
-    CSRF_TRUSTED_ORIGINS += (host,)
-
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_COOKIE_NAME = "csrftoken"
-CSRF_HEADER_NAME = "HTTP_X_CSRFTOKEN"
 
 # Tell Django about the custom `User` model we created. The string
 # `authentication.User` tells Django we are referring to the `User` model in
