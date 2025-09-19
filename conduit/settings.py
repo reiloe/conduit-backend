@@ -139,7 +139,6 @@ hosts = [f"{char}:"+os.environ['FRONTEND_PORT'] for char in ALLOWED_HOSTS]
 hosts.extend([f"{char}:"+os.environ['BACKEND_PORT'] for char in ALLOWED_HOSTS])
 
 for host in hosts:
-    CORS_ALLOWED_ORIGINS += (host,)
     CORS_ORIGIN_WHITELIST += (host,)
     CSRF_TRUSTED_ORIGINS += (host,)
 
