@@ -133,7 +133,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = ()
 CORS_ORIGIN_WHITELIST = ()
-CORS_ALLOWED_ORIGINS = ['localhost:8000', 'localhost:8282','http://localhost:8000','http://localhost:8202']
 
 hosts = [f"{char}:"+os.environ['FRONTEND_PORT'] for char in ALLOWED_HOSTS]
 hosts.extend([f"{char}:"+os.environ['BACKEND_PORT'] for char in ALLOWED_HOSTS])
