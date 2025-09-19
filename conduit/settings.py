@@ -48,9 +48,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,11 +132,13 @@ STATIC_URL = '/static/'
 
 CSRF_TRUSTED_ORIGINS = ()
 CORS_ORIGIN_WHITELIST = ()
+CORS_ALLOWED_ORIGINS = ()
 
 hosts = [f"{char}:"+os.environ['FRONTEND_PORT'] for char in ALLOWED_HOSTS]
 hosts.extend([f"{char}:"+os.environ['BACKEND_PORT'] for char in ALLOWED_HOSTS])
 
 for host in hosts:
+    CORS_ALLOWED_ORIGINS += (host,)
     CORS_ORIGIN_WHITELIST += (host,)
     CSRF_TRUSTED_ORIGINS += (host,)
 
